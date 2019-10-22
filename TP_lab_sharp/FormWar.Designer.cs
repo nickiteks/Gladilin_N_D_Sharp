@@ -1,6 +1,6 @@
 ﻿namespace PT_lab_1
 {
-    partial class FormTank
+    partial class FormWar
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -34,6 +34,7 @@
             this.buttonLeft = new System.Windows.Forms.Button();
             this.buttonDown = new System.Windows.Forms.Button();
             this.buttonRight = new System.Windows.Forms.Button();
+            this.buttonCreateCar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCars)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,9 +53,9 @@
             this.buttonCreate.Name = "buttonCreate";
             this.buttonCreate.Size = new System.Drawing.Size(75, 23);
             this.buttonCreate.TabIndex = 1;
-            this.buttonCreate.Text = "создать";
+            this.buttonCreate.Text = "дополнение";
             this.buttonCreate.UseVisualStyleBackColor = true;
-            this.buttonCreate.Click += new System.EventHandler(this.ButtonCreate_Click_1);
+            this.buttonCreate.Click += new System.EventHandler(this.ButtonCreate_Click);
             // 
             // buttonUp
             // 
@@ -103,19 +104,30 @@
             this.buttonRight.UseVisualStyleBackColor = true;
             this.buttonRight.Click += new System.EventHandler(this.buttonMove_Click);
             // 
-            // FormCar
+            // buttonCreateCar
+            // 
+            this.buttonCreateCar.Location = new System.Drawing.Point(109, 13);
+            this.buttonCreateCar.Name = "buttonCreateCar";
+            this.buttonCreateCar.Size = new System.Drawing.Size(66, 22);
+            this.buttonCreateCar.TabIndex = 6;
+            this.buttonCreateCar.Text = "основа";
+            this.buttonCreateCar.UseVisualStyleBackColor = true;
+            this.buttonCreateCar.Click += new System.EventHandler(this.ButtonCreateCar_Click_1);
+            // 
+            // FormWar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(884, 461);
+            this.Controls.Add(this.buttonCreateCar);
             this.Controls.Add(this.buttonRight);
             this.Controls.Add(this.buttonDown);
             this.Controls.Add(this.buttonLeft);
             this.Controls.Add(this.buttonUp);
             this.Controls.Add(this.buttonCreate);
             this.Controls.Add(this.pictureBoxCars);
-            this.Name = "FormCar";
+            this.Name = "FormWar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCars)).EndInit();
@@ -131,6 +143,7 @@
         private System.Windows.Forms.Button buttonLeft;
         private System.Windows.Forms.Button buttonDown;
         private System.Windows.Forms.Button buttonRight;
+        private System.Windows.Forms.Button buttonCreateCar;
     }
 }
 

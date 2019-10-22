@@ -8,106 +8,64 @@ using System.Threading.Tasks;
 namespace PT_lab_1
 {
 
+    
 
 
-
-    class Tank
+    class Tank : WarCar
     {
-
-        private float _startPosX;
-
-        private float _startPosY;
-
-        private int _pictureWidth;
-
-        private int _pictureHeight;
-
-        private const int tankWidth = 100;
-
-        private const int tankHeight = 60;
-
-        public int MaxSpeed { private set; get; }
-
-        public float Weight { private set; get; }
-
-        public Color MainColor { private set; get; }
-
+        /// <summary>
+        /// Дополнительный цвет
+        /// </summary>
         public Color DopColor { private set; get; }
-
+        /// <summary>
+        /// Признак наличия переднего спойлера
+        /// </summary>
         public bool firstGun { private set; get; }
-
+        /// <summary>
+        /// Признак наличия боковых спойлеров
+        /// </summary>
         public bool secondGun { private set; get; }
-
+        /// <summary>
+        /// Признак наличия заднего спойлера
+        /// </summary>
         public bool thirdGun { private set; get; }
+        /// <summary>
+        /// Количество полос
+        /// </summary>
 
+        /// <summary>
+        /// Конструктор
+        /// </summary>
+        /// <param name="maxSpeed">Максимальная скорость</param>
+        /// <param name="weight">Вес автомобиля</param>
+        /// <param name="mainColor">Основной цвет кузова</param>
+        /// <param name="dopColor">Дополнительный цвет</param>
+        /// <param name="frontSpoiler">Признак наличия переднего спойлера</param>
+        /// <param name="sideSpoiler">Признак наличия боковых спойлеров</param>
+        /// <param name="backSpoiler">Признак наличия заднего спойлера</param>
         public Tank(int maxSpeed, float weight, Color mainColor, Color dopColor,
-       bool frontSpoiler, bool sideSpoiler, bool backSpoiler)
+       bool _firstGun, bool _secondGun, bool _thirdGun) :
+        base(maxSpeed, weight, mainColor)
         {
-            MaxSpeed = maxSpeed;
-            Weight = weight;
-            MainColor = mainColor;
             DopColor = dopColor;
-            firstGun = frontSpoiler;
-            secondGun = sideSpoiler;
-            thirdGun = backSpoiler;
-        }
+            firstGun = _firstGun;
 
-        public void SetPosition(int x, int y, int width, int height)
-        {
-            _startPosX = x;
-            _startPosY = y;
-            _pictureWidth = width;
-            _pictureHeight = height;
+            secondGun = _secondGun;
+
+            thirdGun = _thirdGun;
+            Random rnd = new Random();
         }
-        /// <summary>
-        /// Изменение направления пермещения
-        /// </summary>
-        /// <param name="direction">Направление</param>
-        public void MoveTransport(Direction direction)
-        {
-            float step = MaxSpeed * 100 / Weight;
-            switch (direction)
-            {
-                // вправо
-                case Direction.Right:
-                    if (_startPosX + step < _pictureWidth - tankWidth)
-                    {
-                        _startPosX += step;
-                    }
-                    break;
-                //влево
-                case Direction.Left:
-                    if (_startPosX - step > 0)
-                    {
-                        _startPosX -= step;
-                    }
-                    break;
-                //вверх
-                case Direction.Up:
-                    if (_startPosY - step > 0)
-                    {
-                        _startPosY -= step;
-                    }
-                    break;
-                //вниз
-                case Direction.Down:
-                    if (_startPosY + step < _pictureHeight - tankHeight)
-                    {
-                        _startPosY += step;
-                    }
-                    break;
-            }
-        }
-        /// <summary>
-        /// Отрисовка автомобиля
-        /// </summary>
-        /// <param name="g"></param>
-        public void DrawTank(Graphics g)
+        public override void drawWarCar(Graphics g)
         {
             Pen pen = new Pen(Color.Black);
+            Brush dopBrush = new SolidBrush(DopColor);
+            // отрисуем сперва передний спойлер автомобиля (чтобы потом отрисовка
+
+
             if (firstGun)
             {
                 Brush brFirstGun = new SolidBrush(DopColor);
+
                 g.DrawRectangle(pen, _startPosX + 5, _startPosY + 10, 85, 10);
 
                 g.FillRectangle(brFirstGun, _startPosX + 5, _startPosY + 10, 85, 10);
@@ -123,34 +81,33 @@ namespace PT_lab_1
                 g.DrawRectangle(pen, _startPosX + 5, _startPosY + 40, 85, 6);
 
             }
-            if (thirdGun)
+            if (secondGun)
             {
                 Brush brThirdGun = new SolidBrush(DopColor);
                 g.DrawRectangle(pen, _startPosX - 35, _startPosY + 32, 80, 6);
                 g.FillRectangle(brThirdGun, _startPosX - 35, _startPosY + 32, 80, 6);
                 g.DrawRectangle(pen, _startPosX - 35, _startPosY + 32, 80, 6);
             }
+
+
+
+
             Brush brTank = new SolidBrush(MainColor);
+            g.DrawRectangle(pen, _startPosX + 5, _startPosY + 10, 85, 10);
             g.DrawRectangle(pen, _startPosX + 10, _startPosY - 5, 20, 10);
             g.FillRectangle(brTank, _startPosX + 10, _startPosY - 5, 20, 10);
-            g.DrawRectangle(pen, _startPosX + 10, _startPosY - 5, 20, 10);
             g.DrawEllipse(pen, _startPosX, _startPosY, 52, 31);
-            g.DrawEllipse(pen, _startPosX - 10, _startPosY + 30, 75, 40);
+            //  g.DrawEllipse(pen, _startPosX - 10, _startPosY + 30, 75, 40);
             g.FillEllipse(brTank, _startPosX, _startPosY, 52, 31);
-            g.FillEllipse(brTank, _startPosX - 10, _startPosY + 30, 75, 40);
+            //  g.FillEllipse(brTank, _startPosX - 10, _startPosY + 30, 75, 40);
             g.DrawEllipse(pen, _startPosX, _startPosY, 52, 31);
-            g.DrawEllipse(pen, _startPosX - 10, _startPosY + 30, 75, 40);
-            int plase = 10;
-            for (int i = 0; i < 4; i++)
-            {
-                g.DrawEllipse(pen, _startPosX - plase, _startPosY + 40, 19, 20);
-                plase -= 19;
-            }
-            g.DrawRectangle(pen, _startPosX + 10, _startPosY + 10, 25, 10);
+            //  g.DrawEllipse(pen, _startPosX - 10, _startPosY + 30, 75, 40);
+
+            base.drawWarCar(g);
+
+
         }
     }
 
-
-    
 }
 

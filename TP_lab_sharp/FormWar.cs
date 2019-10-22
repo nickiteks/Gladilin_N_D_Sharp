@@ -10,40 +10,40 @@ using System.Windows.Forms;
 
 namespace PT_lab_1
 {
-    public partial class FormTank : Form
+    public partial class FormWar : Form
     {
-        private Tank car;
+
+        private ITransport car;
         /// <summary>
         /// Конструктор
         /// </summary>
-        public FormTank()
+        public FormWar()
         {
             InitializeComponent();
         }
         /// <summary>
         /// Метод отрисовки машины
         /// </summary>
+        /// 
         private void Draw()
         {
             Bitmap bmp = new Bitmap(pictureBoxCars.Width, pictureBoxCars.Height);
             Graphics gr = Graphics.FromImage(bmp);
-            car.DrawTank(gr);
+            car.drawWarCar(gr);
             pictureBoxCars.Image = bmp;
         }
         /// <summary>
-        /// Обработка нажатия кнопки "Создать"
+        /// Обработка нажатия кнопки "Создать автомобиль"
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void buttonCreate_Click(object sender, EventArgs e)
-        {
-            Random rnd = new Random();
-            car = new Tank(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Blue,
-           Color.Yellow, true, true, true);
-            car.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxCars.Width,
-           pictureBoxCars.Height);
-            Draw();
-        }
+
+        /// <summary>
+        /// Обработка нажатия кнопки "Создать гоночный автомобиль"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+
         /// <summary>
         /// Обработка нажатия кнопок управления
         /// </summary>
@@ -69,9 +69,11 @@ namespace PT_lab_1
                     break;
             }
             Draw();
+
+
         }
 
-        private void ButtonCreate_Click_1(object sender, EventArgs e)
+        private void ButtonCreate_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
             car = new Tank(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Green,
@@ -81,5 +83,18 @@ namespace PT_lab_1
             Draw();
 
         }
+
+        private void ButtonCreateCar_Click_1(object sender, EventArgs e)
+        {
+
+            Random rnd = new Random();
+            car = new WarCar(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Green);
+            car.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxCars.Width,
+           pictureBoxCars.Height);
+            Draw();
+        }
+
+    
     }
 }
+
