@@ -16,7 +16,7 @@ namespace PT_lab_1
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormWar());
+            Application.Run(new FormParking());
         }
     }
 }

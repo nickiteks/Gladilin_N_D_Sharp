@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PT_lab_1
 {
-    interface ITransport
+    public interface ITransport
     {
         ///ttt
         /// <summary>
