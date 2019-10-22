@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TP_lab_sharp
+namespace PT_lab_1
 {
     static class Program
     {
@@ -16,7 +16,7 @@ namespace TP_lab_sharp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new FormTank());
         }
     }
 }
