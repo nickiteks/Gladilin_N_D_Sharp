@@ -7,13 +7,8 @@ using System.Threading.Tasks;
 
 namespace PT_lab_1
 {
-
-
-
-
     class Tank
     {
-
         private float _startPosX;
 
         private float _startPosY;
@@ -121,7 +116,6 @@ namespace PT_lab_1
                 g.FillRectangle(brSecondGun, _startPosX + 5, _startPosY + 40, 85, 6);
 
                 g.DrawRectangle(pen, _startPosX + 5, _startPosY + 40, 85, 6);
-
             }
             if (thirdGun)
             {
@@ -148,9 +142,6 @@ namespace PT_lab_1
             }
             g.DrawRectangle(pen, _startPosX + 10, _startPosY + 10, 25, 10);
         }
-    }
-
-
-    
+    }  
 }
 
