@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Общие сведения об этой сборке предоставляются следующим набором
 // набора атрибутов. Измените значения этих атрибутов для изменения сведений,
 // связанных со сборкой.
-[assembly: AssemblyTitle("TP_lab_sharp")]
+[assembly: AssemblyTitle("PT_lab_1")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("TP_lab_sharp")]
+[assembly: AssemblyProduct("PT_lab_1")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Следующий GUID служит для идентификации библиотеки типов, если этот проект будет видимым для COM
-[assembly: Guid("56d899e7-e531-44b8-b8fd-7faf06c8cb52")]
+[assembly: Guid("425a97bb-b682-4fdf-88d7-554a83d47b5d")]
 
 // Сведения о версии сборки состоят из указанных ниже четырех значений:
 //

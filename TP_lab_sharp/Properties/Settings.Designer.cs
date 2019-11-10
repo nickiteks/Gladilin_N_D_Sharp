@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TP_lab_sharp.Properties
+namespace PT_lab_1.Properties
 {
 
 
