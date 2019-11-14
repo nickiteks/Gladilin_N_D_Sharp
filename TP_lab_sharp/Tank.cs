@@ -7,10 +7,6 @@ using System.Threading.Tasks;
 
 namespace PT_lab_1
 {
-
-    
-
-
     class Tank : WarCar
     {
         /// <summary>
@@ -60,8 +56,6 @@ namespace PT_lab_1
             Pen pen = new Pen(Color.Black);
             Brush dopBrush = new SolidBrush(DopColor);
             // отрисуем сперва передний спойлер автомобиля (чтобы потом отрисовка
-
-
             if (firstGun)
             {
                 Brush brFirstGun = new SolidBrush(DopColor);
@@ -88,10 +82,6 @@ namespace PT_lab_1
                 g.FillRectangle(brThirdGun, _startPosX - 35, _startPosY + 32, 80, 6);
                 g.DrawRectangle(pen, _startPosX - 35, _startPosY + 32, 80, 6);
             }
-
-
-
-
             Brush brTank = new SolidBrush(MainColor);
             g.DrawRectangle(pen, _startPosX + 5, _startPosY + 10, 85, 10);
             g.DrawRectangle(pen, _startPosX + 10, _startPosY - 5, 20, 10);
@@ -102,12 +92,7 @@ namespace PT_lab_1
             //  g.FillEllipse(brTank, _startPosX - 10, _startPosY + 30, 75, 40);
             g.DrawEllipse(pen, _startPosX, _startPosY, 52, 31);
             //  g.DrawEllipse(pen, _startPosX - 10, _startPosY + 30, 75, 40);
-
             base.drawWarCar(g);
-
-
         }
     }
-
 }
-
