@@ -45,9 +45,7 @@ namespace PT_lab_1
         {
             DopColor = dopColor;
             firstGun = _firstGun;
-
             secondGun = _secondGun;
-
             thirdGun = _thirdGun;
             Random rnd = new Random();
         }
@@ -56,12 +54,12 @@ namespace PT_lab_1
             Pen pen = new Pen(Color.Black);
             Brush dopBrush = new SolidBrush(DopColor);
             // отрисуем сперва передний спойлер автомобиля (чтобы потом отрисовка
+
+
             if (firstGun)
             {
                 Brush brFirstGun = new SolidBrush(DopColor);
-
                 g.DrawRectangle(pen, _startPosX + 5, _startPosY + 10, 85, 10);
-
                 g.FillRectangle(brFirstGun, _startPosX + 5, _startPosY + 10, 85, 10);
                 g.DrawRectangle(pen, _startPosX + 5, _startPosY + 10, 85, 10);
             }
@@ -79,7 +77,6 @@ namespace PT_lab_1
                 g.FillRectangle(brThirdGun, _startPosX - 35, _startPosY + 32, 80, 6);
                 g.DrawRectangle(pen, _startPosX - 35, _startPosY + 32, 80, 6);
             }
-
             Brush brTank = new SolidBrush(MainColor);
             g.DrawRectangle(pen, _startPosX + 5, _startPosY + 10, 85, 10);
             g.DrawRectangle(pen, _startPosX + 10, _startPosY - 5, 20, 10);
