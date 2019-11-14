@@ -12,7 +12,6 @@ namespace PT_lab_1
 {
     public partial class FormWar : Form
     {
-
         private ITransport car;
         /// <summary>
         /// Конструктор
@@ -69,9 +68,8 @@ namespace PT_lab_1
                     break;
             }
             Draw();
-
-
         }
+
         private void ButtonCreate_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
@@ -80,7 +78,6 @@ namespace PT_lab_1
             car.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxCars.Width,
            pictureBoxCars.Height);
             Draw();
-
         }
         private void ButtonCreateCar_Click_1(object sender, EventArgs e)
         {

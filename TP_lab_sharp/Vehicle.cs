@@ -45,5 +45,4 @@ namespace PT_lab_1
         public abstract void drawWarCar(Graphics g);
         public abstract void MoveTransport(Direction direction);
     }
-
 }
