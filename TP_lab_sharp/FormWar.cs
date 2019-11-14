@@ -69,8 +69,6 @@ namespace PT_lab_1
                     break;
             }
             Draw();
-
-
         }
         private void ButtonCreate_Click(object sender, EventArgs e)
         {
