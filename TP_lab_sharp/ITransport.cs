@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PT_lab_1
 {
-    interface ITransport
+    public interface ITransport
     {
         ///ttt
         /// <summary>
@@ -27,6 +27,6 @@ namespace PT_lab_1
         /// Отрисовка автомобиля
         /// </summary>
         /// <param name="g"></param>
-       void drawWarCar(Graphics g);
+        void drawWarCar(Graphics g);
     }
 }
