@@ -79,11 +79,8 @@ namespace PT_lab_1
             g.DrawRectangle(pen, _startPosX + 10, _startPosY - 5, 20, 10);
             g.FillRectangle(brTank, _startPosX + 10, _startPosY - 5, 20, 10);
             g.DrawEllipse(pen, _startPosX, _startPosY, 52, 31);
-            //  g.DrawEllipse(pen, _startPosX - 10, _startPosY + 30, 75, 40);
             g.FillEllipse(brTank, _startPosX, _startPosY, 52, 31);
-            //  g.FillEllipse(brTank, _startPosX - 10, _startPosY + 30, 75, 40);
             g.DrawEllipse(pen, _startPosX, _startPosY, 52, 31);
-            //  g.DrawEllipse(pen, _startPosX - 10, _startPosY + 30, 75, 40);
             base.drawWarCar(g);
         }
     }
