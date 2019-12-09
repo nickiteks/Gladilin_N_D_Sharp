@@ -53,9 +53,6 @@ namespace PT_lab_1
         {
             Pen pen = new Pen(Color.Black);
             Brush dopBrush = new SolidBrush(DopColor);
-            // отрисуем сперва передний спойлер автомобиля (чтобы потом отрисовка
-
-
             if (firstGun)
             {
                 Brush brFirstGun = new SolidBrush(DopColor);
