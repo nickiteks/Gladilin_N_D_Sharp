@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
 
 namespace PT_lab_1
 {
     public interface ITransport
     {
-        ///ttt
         /// <summary>
         /// Установка позиции автомобиля
         /// </summary>
@@ -27,6 +21,7 @@ namespace PT_lab_1
         /// Отрисовка автомобиля
         /// </summary>
         /// <param name="g"></param>
-        void drawWarCar(Graphics g);
+        void DrawWarCar(Graphics g);
+        void SetMainColor(Color color);
     }
 }

@@ -28,7 +28,7 @@ namespace PT_lab_1
         {
             Bitmap bmp = new Bitmap(pictureBoxCars.Width, pictureBoxCars.Height);
             Graphics gr = Graphics.FromImage(bmp);
-            car.drawWarCar(gr);
+            car.DrawWarCar(gr);
             pictureBoxCars.Image = bmp;
         }
         /// <summary>
@@ -36,13 +36,13 @@ namespace PT_lab_1
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-
+        
         /// <summary>
         /// Обработка нажатия кнопки "Создать гоночный автомобиль"
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-
+      
         /// <summary>
         /// Обработка нажатия кнопок управления
         /// </summary>
@@ -72,17 +72,17 @@ namespace PT_lab_1
 
         private void ButtonCreate_Click(object sender, EventArgs e)
         {
-            Random rnd = new Random();
-            car = new Tank(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Green,
+           Random rnd = new Random();
+            car = new Tank(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Blue,
            Color.Yellow, true, true, true);
             car.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxCars.Width,
            pictureBoxCars.Height);
             Draw();
         }
         private void ButtonCreateCar_Click_1(object sender, EventArgs e)
-        {
+        {         
             Random rnd = new Random();
-            car = new WarCar(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Green);
+            car = new WarCar(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Blue);
             car.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxCars.Width,
            pictureBoxCars.Height);
             Draw();

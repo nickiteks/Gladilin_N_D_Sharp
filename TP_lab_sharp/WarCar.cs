@@ -12,11 +12,11 @@ namespace PT_lab_1
         /// <summary>
         /// Ширина отрисовки автомобиля
         /// </summary>
-        protected const int tankWidth = 100;
+        protected const int carWidth = 100;
         /// <summary>
         /// Ширина отрисовки автомобиля
         /// </summary>
-        protected const int tankHeight = 60;
+        protected const int carHeight = 60;
         /// <summary>
         /// Конструктор
         /// </summary>
@@ -36,7 +36,7 @@ namespace PT_lab_1
             {
                 // вправо
                 case Direction.Right:
-                    if (_startPosX + step < _pictureWidth - tankWidth)
+                    if (_startPosX + step < _pictureWidth - carWidth)
                     {
                         _startPosX += step;
                     }
@@ -57,25 +57,27 @@ namespace PT_lab_1
                     break;
                 //вниз
                 case Direction.Down:
-                    if (_startPosY + step < _pictureHeight - tankHeight)
+                    if (_startPosY + step < _pictureHeight - carHeight)
                     {
                         _startPosY += step;
                     }
                     break;
             }
         }
-        public override void drawWarCar(Graphics g)
+        public override void DrawWarCar(Graphics g)
         {
             Pen pen = new Pen(Color.Black);
 
             Brush warCar = new SolidBrush(MainColor);
             Brush blackBrush = new SolidBrush(Color.Black);
+
             g.FillRectangle(warCar, _startPosX + 60, _startPosY + 35, 50, 45);
             g.FillRectangle(blackBrush, _startPosX + 80, _startPosY + 40, 30, 30);
             g.FillRectangle(warCar, _startPosX - 20, _startPosY + 30, 80, 50);
             g.DrawRectangle(pen, _startPosX - 20, _startPosY + 30, 80, 50);
             g.DrawRectangle(pen, _startPosX - 15, _startPosY + 35, 60, 30);
             g.DrawRectangle(pen, _startPosX + 60, _startPosY + 35, 50, 45);
+
             g.FillEllipse(blackBrush, _startPosX - 18, _startPosY + 70, 40, 40);
             g.FillEllipse(blackBrush, _startPosX + 55, _startPosY + 70, 40, 40);
         }
