@@ -15,7 +15,7 @@ namespace PT_lab_1
         private event carDelegate eventAddCar;
         ITransport car = null;
         public FormCarConfig()
-        {           
+        {     
             InitializeComponent();
             panelBlack.MouseDown += panelColor_MouseDown;
             panelGold.MouseDown += panelColor_MouseDown;
@@ -48,21 +48,21 @@ namespace PT_lab_1
             labelCar.DoDragDrop(labelCar.Text, DragDropEffects.Move |
             DragDropEffects.Copy);
         }
-
         private void panelCar_DragDrop(object sender, DragEventArgs e)
         {
             switch (e.Data.GetData(DataFormats.Text).ToString())
             {
-                case "Машина":
+                case "автомобиль":
                     car = new WarCar(100, 500, Color.White);
                     break;
-                case "Танк":
+                case "танк":
                     car = new Tank(100, 500, Color.White, Color.Black, true, true,
                    true);
                     break;
             }
             DrawCar();
         }
+
         private void panelCar_DragEnter(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.Text))
@@ -74,6 +74,7 @@ namespace PT_lab_1
                 e.Effect = DragDropEffects.None;
             }
         }
+
         private void labelSportCar_MouseDown(object sender, MouseEventArgs e)
         {
             labelSportCar.DoDragDrop(labelSportCar.Text, DragDropEffects.Move |
@@ -87,8 +88,9 @@ namespace PT_lab_1
                 DrawCar();
             }
         }
+
         private void labelBaseColor_DragEnter(object sender, DragEventArgs e)
-        {
+        {      
             if (e.Data.GetDataPresent(typeof(Color)))
             {
                 e.Effect = DragDropEffects.Copy;
@@ -108,7 +110,6 @@ namespace PT_lab_1
                     DrawCar();
                 }
             }
-
         }
         public void AddEvent(carDelegate ev)
         {

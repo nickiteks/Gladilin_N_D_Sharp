@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -9,8 +9,6 @@ namespace PT_lab_1
 {
     public class WarCar : Vehicle
     {
-        /// <summary>
-        /// Ширина отрисовки автомобиля
         /// </summary>
         protected const int carWidth = 100;
         /// <summary>
@@ -28,6 +26,20 @@ namespace PT_lab_1
             MaxSpeed = maxSpeed;
             Weight = weight;
             MainColor = mainColor;
+        }
+        /// <summary>
+        /// Конструктор
+        /// </summary>
+        /// <param name="info">Информация по объекту</param>
+        public WarCar(string info)
+        {
+            string[] strs = info.Split(';');
+            if (strs.Length == 3)
+            {
+                MaxSpeed = Convert.ToInt32(strs[0]);
+                Weight = Convert.ToInt32(strs[1]);
+                MainColor = Color.FromName(strs[2]);
+            }
         }
         public override void MoveTransport(Direction direction)
         {
@@ -67,20 +79,20 @@ namespace PT_lab_1
         public override void DrawWarCar(Graphics g)
         {
             Pen pen = new Pen(Color.Black);
-
             Brush warCar = new SolidBrush(MainColor);
             Brush blackBrush = new SolidBrush(Color.Black);
-
             g.FillRectangle(warCar, _startPosX + 60, _startPosY + 35, 50, 45);
             g.FillRectangle(blackBrush, _startPosX + 80, _startPosY + 40, 30, 30);
             g.FillRectangle(warCar, _startPosX - 20, _startPosY + 30, 80, 50);
             g.DrawRectangle(pen, _startPosX - 20, _startPosY + 30, 80, 50);
             g.DrawRectangle(pen, _startPosX - 15, _startPosY + 35, 60, 30);
             g.DrawRectangle(pen, _startPosX + 60, _startPosY + 35, 50, 45);
-
             g.FillEllipse(blackBrush, _startPosX - 18, _startPosY + 70, 40, 40);
             g.FillEllipse(blackBrush, _startPosX + 55, _startPosY + 70, 40, 40);
         }
+        public override string ToString()
+        {
+            return MaxSpeed + ";" + Weight + ";" + MainColor.Name;
+        }
     }
 }
-

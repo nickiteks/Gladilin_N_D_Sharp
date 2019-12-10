@@ -79,8 +79,9 @@ namespace PT_lab_1
            pictureBoxCars.Height);
             Draw();
         }
+
         private void ButtonCreateCar_Click_1(object sender, EventArgs e)
-        {         
+        {   
             Random rnd = new Random();
             car = new WarCar(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Blue);
             car.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxCars.Width,

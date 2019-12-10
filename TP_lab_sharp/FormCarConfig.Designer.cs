@@ -53,9 +53,9 @@
             // pictureBoxCar
             // 
             this.pictureBoxCar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxCar.Location = new System.Drawing.Point(13, 13);
+            this.pictureBoxCar.Location = new System.Drawing.Point(18, 45);
             this.pictureBoxCar.Name = "pictureBoxCar";
-            this.pictureBoxCar.Size = new System.Drawing.Size(183, 133);
+            this.pictureBoxCar.Size = new System.Drawing.Size(198, 133);
             this.pictureBoxCar.TabIndex = 0;
             this.pictureBoxCar.TabStop = false;
             // 
@@ -77,7 +77,7 @@
             this.labelCar.Name = "labelCar";
             this.labelCar.Size = new System.Drawing.Size(126, 37);
             this.labelCar.TabIndex = 2;
-            this.labelCar.Text = "Машина";
+            this.labelCar.Text = "автомобиль";
             this.labelCar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.labelCar_MouseDown);
             // 
             // labelSportCar
@@ -87,7 +87,7 @@
             this.labelSportCar.Name = "labelSportCar";
             this.labelSportCar.Size = new System.Drawing.Size(123, 40);
             this.labelSportCar.TabIndex = 3;
-            this.labelSportCar.Text = "Танк";
+            this.labelSportCar.Text = "танк";
             this.labelSportCar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.labelSportCar_MouseDown);
             // 
             // panelCar
@@ -98,7 +98,7 @@
             this.panelCar.Controls.Add(this.pictureBoxCar);
             this.panelCar.Location = new System.Drawing.Point(316, 34);
             this.panelCar.Name = "panelCar";
-            this.panelCar.Size = new System.Drawing.Size(207, 278);
+            this.panelCar.Size = new System.Drawing.Size(237, 337);
             this.panelCar.TabIndex = 2;
             this.panelCar.DragDrop += new System.Windows.Forms.DragEventHandler(this.panelCar_DragDrop);
             this.panelCar.DragEnter += new System.Windows.Forms.DragEventHandler(this.panelCar_DragEnter);
