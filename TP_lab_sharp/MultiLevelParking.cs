@@ -32,8 +32,7 @@ namespace PT_lab_1
             this.pictureWidth = pictureWidth;
             this.pictureHeight = pictureHeight;
             for (int i = 0; i < countStages; ++i)
-            {
-               
+            {        
             parkingStages.Add(new Parking<ITransport>(countPlaces, pictureWidth,
                 pictureHeight));
             }
@@ -90,7 +89,7 @@ namespace PT_lab_1
                 }
             }
             return true;
-        }      
+        }
         public bool LoadData(string filename)
         {
             if (!File.Exists(filename))
@@ -113,7 +112,6 @@ namespace PT_lab_1
                 {
                     return false;
                 }
-
                 while (!fs.EndOfStream)
                 {
                     temp = fs.ReadLine();
@@ -122,7 +120,7 @@ namespace PT_lab_1
                         parkingStages.Add(new Parking<ITransport>(countPlaces, pictureWidth, pictureHeight));
                         level++;
                     }
-                    else 
+                    else
                     {
                         int index = Convert.ToInt32(temp.Split(':')[0]);
                         ITransport mashine = null;

@@ -101,7 +101,7 @@
             // 
             this.pictureBoxTakeCar.Location = new System.Drawing.Point(834, 371);
             this.pictureBoxTakeCar.Name = "pictureBoxTakeCar";
-            this.pictureBoxTakeCar.Size = new System.Drawing.Size(280, 181);
+            this.pictureBoxTakeCar.Size = new System.Drawing.Size(142, 84);
             this.pictureBoxTakeCar.TabIndex = 4;
             this.pictureBoxTakeCar.TabStop = false;
             // 

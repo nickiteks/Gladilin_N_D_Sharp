@@ -44,7 +44,7 @@ namespace PT_lab_1
             _maxCount = sizes;
             _places = new Dictionary<int, T>();
             PictureWidth = pictureWidth;
-            PictureHeight = pictureHeight;        
+            PictureHeight = pictureHeight;  
         }
         /// <summary>
         /// Перегрузка оператора сложения
@@ -55,6 +55,10 @@ namespace PT_lab_1
         /// <returns></returns>
         public static int operator +(Parking<T> p, T car)
         {
+            if (p._places.Count == p._maxCount)
+            {
+                throw new ParkingOverflowException();
+            }
             if (p._places.Count == p._maxCount)
             {
                 return -1;
@@ -88,7 +92,7 @@ namespace PT_lab_1
                 p._places.Remove(index);
                 return car;
             }
-            return null;
+            throw new ParkingNotFoundException(index);
         }
         /// <summary>
         /// Метод проверки заполнености парковочного места (ячейки массива)
@@ -133,6 +137,7 @@ namespace PT_lab_1
                 g.DrawLine(pen, i * _placeSizeWidth, 0, i * _placeSizeWidth, 1000);
             }
         }
+
         //indecsator
         public T this[int ind]
         {
@@ -151,6 +156,10 @@ namespace PT_lab_1
                     _places.Add(ind, value);
                     _places[ind].SetPosition(40 + ind / 5 * _placeSizeWidth + 5, ind % 5
                     * _placeSizeHeight + 15, PictureWidth, PictureHeight);
+                }
+                else
+                {
+                    throw new ParkingOccupiedPlaceException(ind);
                 }
             }
         }

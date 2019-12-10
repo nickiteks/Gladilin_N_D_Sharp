@@ -94,7 +94,6 @@ bool frontSpoiler, bool sideSpoiler, bool backSpoiler) :
                 g.DrawRectangle(pen, _startPosX + 5, _startPosY + 40, 85, 6);
                 g.FillRectangle(brSecondGun, _startPosX + 5, _startPosY + 40, 85, 6);
                 g.DrawRectangle(pen, _startPosX + 5, _startPosY + 40, 85, 6);
-
             }
             if (thirdGun)
             {
@@ -107,7 +106,7 @@ bool frontSpoiler, bool sideSpoiler, bool backSpoiler) :
             g.DrawRectangle(pen, _startPosX + 5, _startPosY + 10, 85, 10);
             g.DrawRectangle(pen, _startPosX + 10, _startPosY - 5, 20, 10);
             g.FillRectangle(brTank, _startPosX + 10, _startPosY - 5, 20, 10);
-            g.DrawEllipse(pen, _startPosX, _startPosY, 52, 31);        
+            g.DrawEllipse(pen, _startPosX, _startPosY, 52, 31);
             g.FillEllipse(brTank, _startPosX, _startPosY, 52, 31);
             g.DrawEllipse(pen, _startPosX, _startPosY, 52, 31);
             base.DrawWarCar(g);
@@ -119,4 +118,3 @@ bool frontSpoiler, bool sideSpoiler, bool backSpoiler) :
         }
     }
 }
-

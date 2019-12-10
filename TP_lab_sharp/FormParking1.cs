@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 namespace PT_lab_1
@@ -14,11 +15,14 @@ namespace PT_lab_1
         /// </summary>
         private const int countLevel = 5;
         FormCarConfig form;
+        private Logger logger;
         public FormParking()
         {
             InitializeComponent();
             parking = new MultiLevelParking(countLevel, pictureBoxParking.Width,
            pictureBoxParking.Height);
+            logger = LogManager.GetCurrentClassLogger();
+            //заполнение listBox
             for (int i = 0; i < countLevel; i++)
             {
                 listBoxLevels.Items.Add("Уровень " + (i + 1));
@@ -40,7 +44,7 @@ namespace PT_lab_1
                 parking[listBoxLevels.SelectedIndex].Draw(gr);
                 pictureBoxParking.Image = bmp;
             }
-        }     
+        }    
         /// <summary>
         /// Обработка нажатия кнопки "Припарковать гоночный автомобиль"
         /// </summary>
@@ -80,6 +84,7 @@ namespace PT_lab_1
                 }
             }
         }
+
         private void buttonSetSportCar_Click_1(object sender, EventArgs e)
         {
             if (listBoxLevels.SelectedIndex > -1)
@@ -105,46 +110,64 @@ namespace PT_lab_1
         }
         private void buttonTakeCar_Click_1(object sender, EventArgs e)
         {
-
             if (listBoxLevels.SelectedIndex > -1)
             {
                 if (maskedTextBox.Text != "")
                 {
-                    var car = parking[listBoxLevels.SelectedIndex] -
-                   Convert.ToInt32(maskedTextBox.Text);
-                    if (car != null)
+                    try
                     {
+                        var car = parking[listBoxLevels.SelectedIndex] -
+                       Convert.ToInt32(maskedTextBox.Text);
                         Bitmap bmp = new Bitmap(pictureBoxTakeCar.Width,
                        pictureBoxTakeCar.Height);
                         Graphics gr = Graphics.FromImage(bmp);
-                        car.SetPosition(40, 5, pictureBoxTakeCar.Width,
+                        car.SetPosition(5, 5, pictureBoxTakeCar.Width,
                        pictureBoxTakeCar.Height);
                         car.DrawWarCar(gr);
                         pictureBoxTakeCar.Image = bmp;
+                        logger.Info("Изъят автомобиль " + car.ToString() + " с места "
+                       + maskedTextBox.Text);
+                        Draw();
                     }
-                    else
+                    catch (ParkingNotFoundException ex)
                     {
+                        logger.Error("free place");
+                        MessageBox.Show(ex.Message, "Не найдено", MessageBoxButtons.OK,
+                       MessageBoxIcon.Error);
                         Bitmap bmp = new Bitmap(pictureBoxTakeCar.Width,
                        pictureBoxTakeCar.Height);
                         pictureBoxTakeCar.Image = bmp;
                     }
-                    Draw();
+                    catch (Exception ex)
+                    {
+                        logger.Error("unknown err");
+                        MessageBox.Show(ex.Message, "Неизвестная ошибка",
+                       MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
-
         }
         private void AddCar(ITransport car)
         {
             if (car != null && listBoxLevels.SelectedIndex > -1)
             {
-                int place = parking[listBoxLevels.SelectedIndex] + car;
-                if (place > -1)
+                try
                 {
+                    int place = parking[listBoxLevels.SelectedIndex] + car;
+                    logger.Info("Добавлен автомобиль " + car.ToString() + " на место " + place);
                     Draw();
                 }
-                else
+                catch (ParkingOverflowException ex)
                 {
-                    MessageBox.Show("Машину не удалось поставить");
+                    logger.Error("no more free place");
+                    MessageBox.Show(ex.Message, "Переполнение", MessageBoxButtons.OK,
+                   MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    logger.Error("unknown err");
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка",
+                   MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -154,40 +177,47 @@ namespace PT_lab_1
             form.AddEvent(AddCar);
             form.Show();
         }
-
         private void сохранитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (saveFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                if (parking.SaveData(saveFileDialog1.FileName))
+                try
                 {
+                    parking.SaveData(saveFileDialog1.FileName);
                     MessageBox.Show("Сохранение прошло успешно", "Результат",
-                   MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    logger.Info("Сохранено в файл " + saveFileDialog1.FileName);
                 }
-                else
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Не сохранилось", "Результат",
-                   MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    logger.Error("Unknown error while saving");
+                    MessageBox.Show(ex.Message, "Unknown error while saving", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-
         }
         private void загрузитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                if (parking.LoadData(openFileDialog1.FileName))
+                try
                 {
+                    parking.LoadData(openFileDialog1.FileName);
                     MessageBox.Show("Загрузили", "Результат", MessageBoxButtons.OK,
-            MessageBoxIcon.Information);
+                    MessageBoxIcon.Information);
+                    logger.Info("Загружено из файла " + openFileDialog1.FileName);
                 }
-                else
+                catch (ParkingOccupiedPlaceException ex)
                 {
-                    MessageBox.Show("Не загрузили", "Результат", MessageBoxButtons.OK,
-                   MessageBoxIcon.Error);
+                    logger.Error("Garages occupied place");
+                    MessageBox.Show(ex.Message, "Place taken", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    logger.Error("Unknown error while upload");
+                    MessageBox.Show(ex.Message, "Unknown error while upload", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 Draw();
             }
-        }       
+        }      
     }
-}
+}

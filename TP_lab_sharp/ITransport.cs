@@ -4,6 +4,7 @@ namespace PT_lab_1
 {
     public interface ITransport
     {
+
         /// <summary>
         /// Установка позиции автомобиля
         /// </summary>
@@ -22,6 +23,8 @@ namespace PT_lab_1
         /// </summary>
         /// <param name="g"></param>
         void DrawWarCar(Graphics g);
+
         void SetMainColor(Color color);
+
     }
 }
