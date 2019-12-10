@@ -32,7 +32,7 @@ namespace PT_lab_1
         /// <summary>
         /// Размер парковочного места (высота)
         /// </summary>
-        private const int _placeSizeHeight = 133;
+        private const int _placeSizeHeight = 132;
         /// <summary>
         /// Конструктор
         /// </summary>
@@ -44,8 +44,7 @@ namespace PT_lab_1
             _maxCount = sizes;
             _places = new Dictionary<int, T>();
             PictureWidth = pictureWidth;
-            PictureHeight = pictureHeight;
-           
+            PictureHeight = pictureHeight;      
         }
         /// <summary>
         /// Перегрузка оператора сложения
@@ -104,7 +103,6 @@ namespace PT_lab_1
          /// <summary>
          /// Метод отрисовки парковки
          /// </summary>
-
          /// <param name="g"></param>
          public void Draw(Graphics g)
         {
@@ -112,7 +110,7 @@ namespace PT_lab_1
             var keys = _places.Keys.ToList();
             for (int i = 0; i < keys.Count; i++)
             {
-                _places[keys[i]].drawWarCar(g);
+                _places[keys[i]].DrawWarCar(g);
             }
         }
         /// <summary>
@@ -123,7 +121,7 @@ namespace PT_lab_1
         {
             Pen pen = new Pen(Color.Black, 3);
             //границы праковки
-            g.DrawRectangle(pen, 0, 0, (_maxCount / 5) * _placeSizeWidth, 480);
+            g.DrawRectangle(pen, 0, 0, (_maxCount / 5) * _placeSizeWidth, 1000);
             for (int i = 0; i < _maxCount / 5; i++)
             {//отрисовываем, по 5 мест на линии
                 for (int j = 0; j < 6; ++j)
@@ -131,7 +129,7 @@ namespace PT_lab_1
                     g.DrawLine(pen, i * _placeSizeWidth, j * _placeSizeHeight,
                     i * _placeSizeWidth + 110, j * _placeSizeHeight);
                 }
-                g.DrawLine(pen, i * _placeSizeWidth, 0, i * _placeSizeWidth, 400);
+                g.DrawLine(pen, i * _placeSizeWidth, 0, i * _placeSizeWidth, 1000);
             }
         }
     }
