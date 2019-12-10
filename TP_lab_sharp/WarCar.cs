@@ -67,6 +67,7 @@ namespace PT_lab_1
         public override void drawWarCar(Graphics g)
         {
             Pen pen = new Pen(Color.Black);
+
             Brush warCar = new SolidBrush(MainColor);
             Brush blackBrush = new SolidBrush(Color.Black);
             g.FillRectangle(warCar, _startPosX + 60, _startPosY + 35, 50, 45);

@@ -45,7 +45,9 @@ namespace PT_lab_1
         {
             DopColor = dopColor;
             firstGun = _firstGun;
+
             secondGun = _secondGun;
+
             thirdGun = _thirdGun;
             Random rnd = new Random();
         }
@@ -56,7 +58,9 @@ namespace PT_lab_1
             if (firstGun)
             {
                 Brush brFirstGun = new SolidBrush(DopColor);
+
                 g.DrawRectangle(pen, _startPosX + 5, _startPosY + 10, 85, 10);
+
                 g.FillRectangle(brFirstGun, _startPosX + 5, _startPosY + 10, 85, 10);
                 g.DrawRectangle(pen, _startPosX + 5, _startPosY + 10, 85, 10);
             }
@@ -64,8 +68,11 @@ namespace PT_lab_1
             {
                 Brush brSecondGun = new SolidBrush(DopColor);
                 g.DrawRectangle(pen, _startPosX + 5, _startPosY + 40, 85, 6);
+
                 g.FillRectangle(brSecondGun, _startPosX + 5, _startPosY + 40, 85, 6);
+
                 g.DrawRectangle(pen, _startPosX + 5, _startPosY + 40, 85, 6);
+
             }
             if (secondGun)
             {

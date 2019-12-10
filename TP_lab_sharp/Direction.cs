@@ -13,5 +13,4 @@ namespace PT_lab_1
         Left,
         Right
     }
-   
 }
