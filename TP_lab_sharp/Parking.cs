@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 namespace PT_lab_1
@@ -7,7 +9,8 @@ namespace PT_lab_1
     /// Параметризованны класс для хранения набора объектов от интерфейса ITransport
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class Parking<T> where T : class, ITransport
+    public class Parking<T> : IEnumerator<T>, IEnumerable<T>, IComparable<Parking<T>>
+ where T : class, ITransport
     {
         /// <summary>
         /// Массив объектов, которые храним
@@ -33,6 +36,19 @@ namespace PT_lab_1
         /// Размер парковочного места (высота)
         /// </summary>
         private const int _placeSizeHeight = 133;
+
+        private int _currentIndex;
+        /// <summary>
+        /// Получить порядковое место на парковке
+        /// </summary>
+        public int GetKey
+        {
+            get
+            {
+                return _places.Keys.ToList()[_currentIndex];
+            }
+        }
+
         /// <summary>
         /// Конструктор
         /// </summary>
@@ -44,7 +60,8 @@ namespace PT_lab_1
             _maxCount = sizes;
             _places = new Dictionary<int, T>();
             PictureWidth = pictureWidth;
-            PictureHeight = pictureHeight;  
+            PictureHeight = pictureHeight;
+           
         }
         /// <summary>
         /// Перегрузка оператора сложения
@@ -59,9 +76,9 @@ namespace PT_lab_1
             {
                 throw new ParkingOverflowException();
             }
-            if (p._places.Count == p._maxCount)
+            if (p._places.ContainsValue(car))
             {
-                return -1;
+                throw new ParkingAlreadyHaveException();
             }
             for (int i = 0; i < p._maxCount; i++)
             {
@@ -162,6 +179,88 @@ namespace PT_lab_1
                     throw new ParkingOccupiedPlaceException(ind);
                 }
             }
+        }
+        public T Current
+        {
+            get
+            {
+                return _places[_places.Keys.ToList()[_currentIndex]];
+            }
+        }
+        object IEnumerator.Current
+        {
+            get
+            {
+                return Current;
+            }
+        }
+        public void Dispose()
+        {
+            _places.Clear();
+        }
+        public bool MoveNext()
+        {
+            if (_currentIndex + 1 >= _places.Count)
+            {
+                Reset();
+                return false;
+            }
+            _currentIndex++;
+            return true;
+        }
+        public void Reset()
+        {
+            _currentIndex = -1;
+        }
+        public IEnumerator<T> GetEnumerator()
+        {
+            return this;
+        }
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+        public int CompareTo(Parking<T> other)
+        {
+            if (_places.Count > other._places.Count)
+            {
+                return -1;
+            }
+            else if (_places.Count < other._places.Count)
+            {
+                return 1;
+            }
+            else if (_places.Count > 0)
+            {
+                var thisKeys = _places.Keys.ToList();
+                var otherKeys = other._places.Keys.ToList();
+                for (int i = 0; i < _places.Count; ++i)
+                {
+                    if (_places[thisKeys[i]] is WarCar && other._places[thisKeys[i]] is
+                   Tank)
+                    {
+                        return 1;
+                    }
+                    if (_places[thisKeys[i]] is Tank && other._places[thisKeys[i]]
+                    is WarCar)
+                    {
+                        return -1;
+                    }
+                    if (_places[thisKeys[i]] is WarCar && other._places[thisKeys[i]] is
+                    WarCar)
+                    {
+                        return (_places[thisKeys[i]] is
+                       WarCar).CompareTo(other._places[thisKeys[i]] is WarCar);
+                    }
+                    if (_places[thisKeys[i]] is Tank && other._places[thisKeys[i]]
+                    is Tank)
+                    {
+                        return (_places[thisKeys[i]] is
+                       Tank).CompareTo(other._places[thisKeys[i]] is Tank);
+                    }
+                }
+            }
+            return 0;
         }
     }
 }

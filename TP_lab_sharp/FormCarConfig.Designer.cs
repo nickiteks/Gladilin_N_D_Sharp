@@ -200,7 +200,6 @@
             this.buttonCancel.TabIndex = 11;
             this.buttonCancel.Text = "отмена";
             this.buttonCancel.UseVisualStyleBackColor = true;
-
             // 
             // buttonAdd
             // 

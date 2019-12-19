@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PT_lab_1
 {
-    public class WarCar : Vehicle
+    public class WarCar : Vehicle , IComparable<WarCar>, IEquatable<WarCar>
     {
         /// </summary>
         protected const int carWidth = 100;
@@ -44,7 +44,7 @@ namespace PT_lab_1
         public override void MoveTransport(Direction direction)
         {
             float step = MaxSpeed * 100 / Weight;
-            switch (direction)
+            switch (direction)/// 
             {
                 // вправо
                 case Direction.Right:
@@ -94,5 +94,69 @@ namespace PT_lab_1
         {
             return MaxSpeed + ";" + Weight + ";" + MainColor.Name;
         }
+        public int CompareTo(WarCar other)
+        {
+            if (other == null)
+            {
+                return 1;
+            }
+            if (MaxSpeed != other.MaxSpeed)
+            {
+                return MaxSpeed.CompareTo(other.MaxSpeed);
+            }
+            if (Weight != other.Weight)
+            {
+                return Weight.CompareTo(other.Weight);
+            }
+            if (MainColor != other.MainColor)
+            {
+                MainColor.Name.CompareTo(other.MainColor.Name);
+            }
+            return 0;
+        }
+        public bool Equals(WarCar other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+            if (GetType().Name != other.GetType().Name)
+            {
+                return false;
+            }
+            if (MaxSpeed != other.MaxSpeed)
+            {
+                return false;
+            }
+            if (Weight != other.Weight)
+            {
+                return false;
+            }
+            if (MainColor != other.MainColor)
+            {
+                return false;
+            }
+            return true;
+
+        }
+        public override bool Equals(Object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+            if (!(obj is WarCar carObj))
+            {
+                return false;
+            }
+            else
+            {
+                return Equals(carObj);
+            }
+        }        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }
+

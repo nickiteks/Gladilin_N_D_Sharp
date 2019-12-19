@@ -15,7 +15,7 @@ namespace PT_lab_1
         private event carDelegate eventAddCar;
         ITransport car = null;
         public FormCarConfig()
-        {   
+        {
             InitializeComponent();
             panelBlack.MouseDown += panelColor_MouseDown;
             panelGold.MouseDown += panelColor_MouseDown;
@@ -88,7 +88,7 @@ namespace PT_lab_1
             }
         }
         private void labelBaseColor_DragEnter(object sender, DragEventArgs e)
-        {          
+        {
             if (e.Data.GetDataPresent(typeof(Color)))
             {
                 e.Effect = DragDropEffects.Copy;
