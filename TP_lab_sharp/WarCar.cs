@@ -44,7 +44,7 @@ namespace PT_lab_1
         public override void MoveTransport(Direction direction)
         {
             float step = MaxSpeed * 100 / Weight;
-            switch (direction)/// 
+            switch (direction) 
             {
                 // вправо
                 case Direction.Right:
@@ -153,10 +153,10 @@ namespace PT_lab_1
             {
                 return Equals(carObj);
             }
-        }        public override int GetHashCode()
+        }
+        public override int GetHashCode()
         {
             return base.GetHashCode();
         }
     }
 }
-
