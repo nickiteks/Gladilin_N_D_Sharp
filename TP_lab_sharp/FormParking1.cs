@@ -63,7 +63,7 @@ namespace PT_lab_1
         {
             Draw();
         }
-        private void buttonSetCar_Click_1(object sender, EventArgs e)
+        private void buttonSetCar_Click(object sender, EventArgs e)
         {
             if (listBoxLevels.SelectedIndex > -1)
             {
@@ -81,7 +81,7 @@ namespace PT_lab_1
                 }
             }
         }
-        private void buttonSetSportCar_Click_1(object sender, EventArgs e)
+        private void buttonSetSportCar_Click(object sender, EventArgs e)
         {
             if (listBoxLevels.SelectedIndex > -1)
             {
@@ -104,7 +104,7 @@ namespace PT_lab_1
                 }
             }
         }
-        private void buttonTakeCar_Click_1(object sender, EventArgs e)
+        private void buttonTakeCar_Click(object sender, EventArgs e)
         {
             if (listBoxLevels.SelectedIndex > -1)
             {
