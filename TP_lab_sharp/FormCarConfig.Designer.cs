@@ -64,11 +64,11 @@
             this.groupBox.Controls.Add(this.labelCar);
             this.groupBox.Controls.Add(this.labelSportCar);
             this.groupBox.Location = new System.Drawing.Point(113, 59);
-            this.groupBox.Name = "groupBox1";
+            this.groupBox.Name = "groupBox";
             this.groupBox.Size = new System.Drawing.Size(169, 166);
             this.groupBox.TabIndex = 1;
             this.groupBox.TabStop = false;
-            this.groupBox.Text = "groupBox1";
+            this.groupBox.Text = "groupBox";
             // 
             // labelCar
             // 
