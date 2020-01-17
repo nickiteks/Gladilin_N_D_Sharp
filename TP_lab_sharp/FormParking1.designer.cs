@@ -80,7 +80,7 @@
             this.buttonTakeCar.TabIndex = 2;
             this.buttonTakeCar.Text = "забрать";
             this.buttonTakeCar.UseVisualStyleBackColor = true;
-            this.buttonTakeCar.Click += new System.EventHandler(this.buttonTakeCar_Click_1);
+            this.buttonTakeCar.Click += new System.EventHandler(this.buttonTakeCar_Click);
             // 
             // maskedTextBox
             // 
