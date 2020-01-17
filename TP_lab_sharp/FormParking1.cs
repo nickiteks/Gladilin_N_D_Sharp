@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 namespace PT_lab_1
@@ -65,7 +66,7 @@ namespace PT_lab_1
         {
             Draw();
         }
-        private void buttonSetCar_Click_1(object sender, EventArgs e)
+        private void buttonSetCar_Click(object sender, EventArgs e)
         {
             if (listBoxLevels.SelectedIndex > -1)
             {
@@ -161,6 +162,11 @@ namespace PT_lab_1
                     MessageBox.Show(ex.Message, "Неизвестная ошибка",
                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                catch (ParkingAlreadyHaveException ex)
+                {
+                    MessageBox.Show(ex.Message, "Дублирование", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    logger.Error("Дублирование");
+                }
             }
         }
         private void buttonAdd_Click(object sender, EventArgs e)
@@ -210,6 +216,12 @@ namespace PT_lab_1
                 }
                 Draw();
             }
+        }
+        private void buttonSort_Click(object sender, EventArgs e)
+        {
+            parking.Sort();
+            Draw();
+            logger.Info("Сортировка уровней");
         }
     }
 }
