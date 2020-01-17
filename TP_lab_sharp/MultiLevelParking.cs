@@ -68,20 +68,20 @@ namespace PT_lab_1
                 {
                     //Начинаем уровень
                     sw.WriteLine("Level");
-                    for (int i = 0; i < countPlaces; i++)
+                    foreach (ITransport transport in level)
                     {
-                        var transport = level[i];
+
                         if (transport != null)
                         {
                             //если место не пустое
                             //Записываем тип мшаины
                             if (transport.GetType().Name == "WarCar")
                             {
-                                sw.Write(i + ":WarCar:");
+                                sw.Write(level.GetKey + ":WarCar:");
                             }
                             if (transport.GetType().Name == "Tank")
                             {
-                                sw.Write(i + ":Tank:");
+                                sw.Write(level.GetKey + ":Tank:");
                             }
                             //Записываемые параметры
                             sw.WriteLine(transport);
@@ -90,7 +90,7 @@ namespace PT_lab_1
                 }
             }
             return true;
-        }      
+        }
         public bool LoadData(string filename)
         {
             if (!File.Exists(filename))
@@ -113,7 +113,6 @@ namespace PT_lab_1
                 {
                     return false;
                 }
-
                 while (!fs.EndOfStream)
                 {
                     temp = fs.ReadLine();
@@ -122,7 +121,7 @@ namespace PT_lab_1
                         parkingStages.Add(new Parking<ITransport>(countPlaces, pictureWidth, pictureHeight));
                         level++;
                     }
-                    else 
+                    else
                     {
                         int index = Convert.ToInt32(temp.Split(':')[0]);
                         ITransport mashine = null;
@@ -140,5 +139,9 @@ namespace PT_lab_1
             }
             return true;
         }
-    }            
+        public void Sort()
+        {
+            parkingStages.Sort();
+        }
+    }
 }

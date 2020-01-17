@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PT_lab_1
 {
-    class Tank : WarCar
+    class Tank : WarCar , IComparable<Tank>, IEquatable<Tank>
     {
         /// <summary>
         /// Дополнительный цвет
@@ -106,7 +106,7 @@ bool frontSpoiler, bool sideSpoiler, bool backSpoiler) :
             g.DrawRectangle(pen, _startPosX + 5, _startPosY + 10, 85, 10);
             g.DrawRectangle(pen, _startPosX + 10, _startPosY - 5, 20, 10);
             g.FillRectangle(brTank, _startPosX + 10, _startPosY - 5, 20, 10);
-            g.DrawEllipse(pen, _startPosX, _startPosY, 52, 31);        
+            g.DrawEllipse(pen, _startPosX, _startPosY, 52, 31);
             g.FillEllipse(brTank, _startPosX, _startPosY, 52, 31);
             g.DrawEllipse(pen, _startPosX, _startPosY, 52, 31);
             base.DrawWarCar(g);
@@ -115,6 +115,80 @@ bool frontSpoiler, bool sideSpoiler, bool backSpoiler) :
         {
             return base.ToString() + ";" + DopColor.Name + ";" + firstGun + ";" +
            secondGun + ";" + thirdGun+";0";
+        }
+        public int CompareTo(Tank other)
+        {
+            var res = (this is WarCar).CompareTo(other is WarCar);
+            if (res != 0)
+            {
+                return res;
+            }
+            if (DopColor != other.DopColor)
+            {
+                DopColor.Name.CompareTo(other.DopColor.Name);
+            }
+            if (firstGun != other.firstGun)
+            {
+                return firstGun.CompareTo(other.firstGun);
+            }
+            if (secondGun != other.secondGun)
+            {
+                return secondGun.CompareTo(other.secondGun);
+            }
+            if (thirdGun != other.thirdGun)
+            {
+                return thirdGun.CompareTo(other.thirdGun);
+            }
+            return 0;
+        }
+        public bool Equals(Tank other)
+        {
+            var res = (this as WarCar).Equals(other as WarCar);
+            if (!res)
+            {
+                return res;
+            }
+            if (GetType().Name != other.GetType().Name)
+            {
+                return false;
+            }
+            if (DopColor != other.DopColor)
+            {
+                return false;
+            }
+            if (firstGun != other.firstGun)
+            {
+                return false;
+            }
+ 
+            if (secondGun != other.secondGun)
+            {
+                return false;
+            }
+            if (thirdGun != other.thirdGun)
+            {
+                return false;
+            }
+            return true;
+        }
+        public override bool Equals(Object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+            if (!(obj is Tank carObj))
+            {
+                return false;
+            }
+            else
+            {
+                return Equals(carObj);
+            }
+        }
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
     }
 }
