@@ -155,12 +155,6 @@ namespace PT_lab_1
                     logger.Info("Добавлен автомобиль " + car.ToString() + " на место " + place);
                     Draw();
                 }
-                catch (ParkingOverflowException ex)
-                {
-                    logger.Error("no more free place");
-                    MessageBox.Show(ex.Message, "Переполнение", MessageBoxButtons.OK,
-                   MessageBoxIcon.Error);
-                }
                 catch (Exception ex)
                 {
                     logger.Error("unknown err");
