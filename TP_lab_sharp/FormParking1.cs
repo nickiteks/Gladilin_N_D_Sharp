@@ -171,14 +171,14 @@ namespace PT_lab_1
         }
  private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 try
                 {
-                    parking.SaveData(saveFileDialog1.FileName);
+                    parking.SaveData(saveFileDialog.FileName);
                     MessageBox.Show("Сохранение прошло успешно", "Результат",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    logger.Info("Сохранено в файл " + saveFileDialog1.FileName);
+                    logger.Info("Сохранено в файл " + saveFileDialog.FileName);
                 }
                 catch (Exception ex)
                 {
@@ -189,14 +189,14 @@ namespace PT_lab_1
         }
         private void LoadToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 try
                 {
-                    parking.LoadData(openFileDialog1.FileName);
+                    parking.LoadData(openFileDialog.FileName);
                     MessageBox.Show("Загрузили", "Результат", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
-                    logger.Info("Загружено из файла " + openFileDialog1.FileName);
+                    logger.Info("Загружено из файла " + openFileDialog.FileName);
                 }
                 catch (ParkingOccupiedPlaceException ex)
                 {
