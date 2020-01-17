@@ -94,7 +94,6 @@ bool frontSpoiler, bool sideSpoiler, bool backSpoiler) :
                 g.DrawRectangle(pen, _startPosX + 5, _startPosY + 40, 85, 6);
                 g.FillRectangle(brSecondGun, _startPosX + 5, _startPosY + 40, 85, 6);
                 g.DrawRectangle(pen, _startPosX + 5, _startPosY + 40, 85, 6);
-
             }
             if (thirdGun)
             {

@@ -168,7 +168,6 @@ namespace PT_lab_1
                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-
         }
         private void LoadToolStripMenuItem_Click(object sender, EventArgs e)
         {

@@ -132,7 +132,6 @@ namespace PT_lab_1
                 g.DrawLine(pen, i * _placeSizeWidth, 0, i * _placeSizeWidth, 1000);
             }
         }
-        //indecsator
         public T this[int ind]
         {
             get
