@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.pictureBoxCar = new System.Windows.Forms.PictureBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox = new System.Windows.Forms.GroupBox();
             this.labelCar = new System.Windows.Forms.Label();
             this.labelSportCar = new System.Windows.Forms.Label();
             this.panelCar = new System.Windows.Forms.Panel();
@@ -46,7 +46,7 @@
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonAdd = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCar)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            this.groupBox.SuspendLayout();
             this.panelCar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,16 +59,16 @@
             this.pictureBoxCar.TabIndex = 0;
             this.pictureBoxCar.TabStop = false;
             // 
-            // groupBox1
+            // groupBox
             // 
-            this.groupBox1.Controls.Add(this.labelCar);
-            this.groupBox1.Controls.Add(this.labelSportCar);
-            this.groupBox1.Location = new System.Drawing.Point(113, 59);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(169, 166);
-            this.groupBox1.TabIndex = 1;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.groupBox.Controls.Add(this.labelCar);
+            this.groupBox.Controls.Add(this.labelSportCar);
+            this.groupBox.Location = new System.Drawing.Point(113, 59);
+            this.groupBox.Name = "groupBox";
+            this.groupBox.Size = new System.Drawing.Size(169, 166);
+            this.groupBox.TabIndex = 1;
+            this.groupBox.TabStop = false;
+            this.groupBox.Text = "groupBox";
             // 
             // labelCar
             // 
@@ -227,11 +227,11 @@
             this.Controls.Add(this.panelWhite);
             this.Controls.Add(this.panelBlack);
             this.Controls.Add(this.panelCar);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBox);
             this.Name = "FormCarConfig";
             this.Text = "FormCarConfig";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCar)).EndInit();
-            this.groupBox1.ResumeLayout(false);
+            this.groupBox.ResumeLayout(false);
             this.panelCar.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -240,7 +240,7 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBoxCar;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox;
         private System.Windows.Forms.Label labelCar;
         private System.Windows.Forms.Label labelSportCar;
         private System.Windows.Forms.Panel panelCar;
