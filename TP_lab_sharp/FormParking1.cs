@@ -156,6 +156,11 @@ namespace PT_lab_1
                     logger.Info("Добавлен автомобиль " + car.ToString() + " на место " + place);
                     Draw();
                 }
+                catch (ParkingAlreadyHaveException ex)
+                {
+                    MessageBox.Show(ex.Message, "Дублирование", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    logger.Error("Дублирование");
+                }
                 catch (ParkingOverflowException ex)
                 {
                     logger.Error("no more free place");
