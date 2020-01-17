@@ -57,6 +57,10 @@ namespace PT_lab_1
         {
             if (p._places.Count == p._maxCount)
             {
+                throw new ParkingOverflowException();
+            }
+            if (p._places.Count == p._maxCount)
+            {
                 return -1;
             }
             for (int i = 0; i < p._maxCount; i++)
@@ -88,7 +92,7 @@ namespace PT_lab_1
                 p._places.Remove(index);
                 return car;
             }
-            return null;
+            throw new ParkingNotFoundException(index);
         }
         /// <summary>
         /// Метод проверки заполнености парковочного места (ячейки массива)
@@ -103,6 +107,7 @@ namespace PT_lab_1
          /// <summary>
          /// Метод отрисовки парковки
          /// </summary>
+
          /// <param name="g"></param>
          public void Draw(Graphics g)
         {
@@ -149,6 +154,10 @@ namespace PT_lab_1
                     _places.Add(ind, value);
                     _places[ind].SetPosition(40 + ind / 5 * _placeSizeWidth + 5, ind % 5
                     * _placeSizeHeight + 15, PictureWidth, PictureHeight);
+                }
+                else
+                {
+                    throw new ParkingOccupiedPlaceException(ind);
                 }
             }
         }
