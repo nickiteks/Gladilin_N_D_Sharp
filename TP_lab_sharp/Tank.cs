@@ -25,13 +25,6 @@ namespace PT_lab_1
         /// Признак наличия заднего спойлера
         /// </summary>
         public bool thirdGun { private set; get; }
-        /// Количество полос
-        /// </summary>
-        private int _countLines;
-        /// <summary>
-        /// Количество полос
-        /// </summary>
-        /// <summary>
         /// Конструктор
         /// </summary>
         /// <param name="maxSpeed">Максимальная скорость</param>
