@@ -31,14 +31,6 @@ namespace PT_lab_1
         /// <summary>
         /// Количество полос
         /// </summary>
-        public int CountLines
-        {
-            set
-            {
-                if (value > 0 && value < 4) _countLines = value;
-            }
-            get { return _countLines; }
-        }
         /// <summary>
         /// Конструктор
         /// </summary>
