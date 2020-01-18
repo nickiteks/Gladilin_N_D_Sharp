@@ -70,7 +70,6 @@ namespace PT_lab_1
                     sw.WriteLine("Level");
                     foreach (ITransport transport in level)
                     {
-
                         if (transport != null)
                         {
                             //если место не пустое
